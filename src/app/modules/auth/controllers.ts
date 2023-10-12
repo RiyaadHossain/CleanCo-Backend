@@ -6,7 +6,7 @@ import { AuthService } from './service';
 
 const signUp: RequestHandler = catchAsync(async(req, res) => {
 
-    const signUpData = {}
+    const signUpData = req.body
     const result = await AuthService.signUp(signUpData)
 
   sendResponse(res, {
@@ -17,4 +17,17 @@ const signUp: RequestHandler = catchAsync(async(req, res) => {
   });
 });
 
-export const AuthController = { signUp };
+const signIn: RequestHandler = catchAsync(async(req, res) => {
+
+    const signInData = req.body
+    const result = await AuthService.signIn(signInData)
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Signed Up successfully',
+    data: result,
+  });
+});
+
+export const AuthController = { signUp, signIn };
