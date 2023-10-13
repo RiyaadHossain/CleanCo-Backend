@@ -1,42 +1,42 @@
 import express from 'express';
-import { UserValidations } from './validation';
+import { CategoryValidations } from './validation';
 import validateRequest from '../../middlewares/validateRequest';
-import { UserController } from './controller';
+import { CategoryController } from './controller';
 import auth from '../../middlewares/auth';
 import { ENUM_USER_ROLE } from '../../../enums/user';
 
 const router = express.Router();
 
 router.post(
-  '/create-admin',
-  auth(ENUM_USER_ROLE.SUPER_ADMIN),
-  validateRequest(UserValidations.createAdmin),
-  UserController.createAdmin
+  '/',
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  validateRequest(CategoryValidations.createCategory),
+  CategoryController.createAdmin
 );
 
 router.get(
   '/',
   auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
-  UserController.getUsers
+  CategoryController.getCategorys
 );
 
 router.get(
   '/:id',
   auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
-  UserController.getUser
+  CategoryController.getCategory
 );
 
 router.patch(
   '/:id',
   auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
-  validateRequest(UserValidations.updateUser),
-  UserController.updateUser
+  validateRequest(CategoryValidations.updateCategory),
+  CategoryController.updateCategory
 );
 
 router.delete(
   '/:id',
   auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
-  UserController.deleteUser
+  CategoryController.deleteCategory
 );
 
-export const UserRoutes = router;
+export const CategoryRoutes = router;
