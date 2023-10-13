@@ -3,6 +3,7 @@ import { AuthRoutes } from '../modules/auth/routes';
 import { UserRoutes } from '../modules/user/routes';
 import { CleaningServiceRoutes } from '../modules/cleaningService/routes';
 import { CategoryRoutes } from '../modules/category/routes';
+import { BookingRoutes } from '../modules/booking/routes';
 
 const router = express.Router();
 
@@ -22,6 +23,10 @@ const moduleRoutes = [
   {
     path: '/cleaning-service',
     routes: CleaningServiceRoutes,
+  },
+  {
+    path: '/bookings',
+    routes: BookingRoutes,
   },
 ];
 

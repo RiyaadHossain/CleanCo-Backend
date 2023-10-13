@@ -1,14 +1,12 @@
 export const cleaningServiceSearchAndFilter = [
   'searchTerm',
-  'name',
-  'role',
-  'age',
-  'contactNo',
+  'title',
+  'category',
+  'status'
 ];
 
 export const cleaningServiceSearchableFields = [
-  'name',
-  'role',
-  'age',
-  'contactNo',
+  'title',
+  'category',
+  'status'
 ];
