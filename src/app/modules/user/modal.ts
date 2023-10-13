@@ -12,7 +12,7 @@ const userSchema = new Schema<IUser>(
     address: { type: String, required: true },
     role: {
       type: String,
-      enum: Object.keys(ENUM_USER_ROLE),
+      // enum: Object.keys(ENUM_USER_ROLE),
       default: ENUM_USER_ROLE.CUSTOMER,
     },
   },
