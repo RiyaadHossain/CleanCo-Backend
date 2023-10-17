@@ -12,7 +12,16 @@ const signUp = async (payload: IUser) => {
   // Hash Password
   payload.password = await AuthUtils.hashPass(payload.password);
   const user = await User.create(payload);
-  return user;
+  
+  // Generate Tokens
+  const tokenPayload = { _id: user._id, role: user.role };
+  const accessToken = jwtHelpers.generateToken(
+    tokenPayload,
+    config.jwt.secret as Secret,
+    config.jwt.expires_in as string
+  );
+
+  return { ...user, accessToken };
 };
 
 const signIn = async (payload: ISignInPayload) => {

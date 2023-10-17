@@ -18,8 +18,19 @@ const createAdmin: RequestHandler = catchAsync(async (req, res) => {
 });
 
 const getReviews: RequestHandler = catchAsync(async (req, res) => {
-  const result = await ReviewService.getReviews(
-  );
+  const result = await ReviewService.getReviews();
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Reviews data fetched successfully',
+    data: result,
+  });
+});
+
+const getReviewsByServiceId: RequestHandler = catchAsync(async (req, res) => {
+  const serviceId = req.params.serviceId
+  const result = await ReviewService.getReviewsByServiceId(serviceId);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -70,6 +81,7 @@ export const ReviewController = {
   createAdmin,
   getReview,
   getReviews,
+  getReviewsByServiceId,
   updateReview,
   deleteReview,
 };
