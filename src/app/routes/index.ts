@@ -8,6 +8,7 @@ import { ReviewRoutes } from '../modules/review/routes';
 import { ProfileRoutes } from '../modules/profile/routes';
 import { FeedbackRoutes } from '../modules/feedback/routes';
 import { CartRoutes } from '../modules/cart/routes';
+import { ContentManagementRoutes } from '../modules/contentManagement/routes';
 
 const router = express.Router();
 
@@ -47,6 +48,10 @@ const moduleRoutes = [
   {
     path: '/carts',
     routes: CartRoutes,
+  },
+  {
+    path: '/content-management',
+    routes: ContentManagementRoutes,
   },
 ];
 
